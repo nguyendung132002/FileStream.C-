@@ -28,6 +28,7 @@ public class FileService : IFileService
         //Đây là nơi lưu dữ liệu đọc từ file vào.
 
         byte[] buffer = new byte[fs.Length];
+        //Đọc toàn bộ buffer (nội dung file) vào stream, từ vị trí 0 đến buffer.Length.
         fs.ReadExactly(buffer, 0, buffer.Length);
         //Chuyển mảng byte đã đọc thành chuỗi, với bộ mã UTF-8.
         return Encoding.UTF8.GetString(buffer);
