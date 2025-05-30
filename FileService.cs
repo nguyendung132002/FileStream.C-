@@ -6,6 +6,13 @@ public class FileService : IFileService
     {
         //Chuyển nội dung chuỗi (string) sang mảng byte (byte[]) bằng mã hóa UTF-8, vì FileStream chỉ xử lý dữ liệu nhị phân.
         byte[] buffer = Encoding.UTF8.GetBytes(content);
+//         Mở (hoặc tạo mới) file tại filePath.
+
+// FileMode.Create: tạo mới file, nếu đã có thì ghi đè.
+
+// FileAccess.Write: chỉ ghi (không đọc).
+
+// using: đảm bảo FileStream tự đóng khi xong.
         using FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write);
         //Ghi toàn bộ buffer (nội dung file) vào stream, từ vị trí 0 đến buffer.Length.
         fs.Write(buffer, 0, buffer.Length);
